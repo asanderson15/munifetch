@@ -1,0 +1,41 @@
+### Gradle ###
+.gradle
+build/
+
+
+### Intellij ###
+.idea/
+*.ipr
+*.iml
+*.iws
+out/
+
+
+### Eclipse ###
+.metadata
+.settings/
+.loadpath
+.classpath
+.project
+
+
+### SublimeText + TextMate ###
+*.sublime-workspace
+*.sublime-project
+*.tmproj
+*.tmproject
+
+
+### Vim ###
+*.sw[op]
+
+
+### Mac OSX + Windows ###
+Thumbs.db
+.DS_Store
+
+
+# ########################
+
+# ignore log files in home/log
+home/log/*.log
