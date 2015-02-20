@@ -4,8 +4,7 @@ package org.asanderson.munifetch;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.JacksonXmlModule;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import org.asanderson.munifetch.model.Agency;
-import org.asanderson.munifetch.model.AgencyList;
+import org.asanderson.munifetch.model.agencies.AgencyList;
 import org.glassfish.jersey.client.ClientConfig;
 
 import javax.ws.rs.client.Client;

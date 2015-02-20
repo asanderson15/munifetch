@@ -1,10 +1,8 @@
-package org.asanderson.munifetch.model;
+package org.asanderson.munifetch.model.agencies;
 
 import javax.xml.bind.annotation.XmlAnyAttribute;
-import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
-import java.util.List;
 
 /**
  * Created by aanderson on 2/19/15.

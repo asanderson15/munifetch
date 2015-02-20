@@ -1,4 +1,4 @@
-package org.asanderson.munifetch.model;
+package org.asanderson.munifetch.model.agencies;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
