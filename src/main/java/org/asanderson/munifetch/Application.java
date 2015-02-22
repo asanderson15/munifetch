@@ -4,6 +4,9 @@ package org.asanderson.munifetch;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.JacksonXmlModule;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import org.asanderson.munifetch.models.Route;
+import org.asanderson.munifetch.models.RouteProvider;
+import org.asanderson.munifetch.models.Stop;
 import org.asanderson.munifetch.xmlobjects.agencies.AgencyListXML;
 import org.asanderson.munifetch.xmlobjects.routeconfigs.RouteConfigXML;
 import org.asanderson.munifetch.xmlobjects.routes.RouteListXML;
@@ -21,7 +24,24 @@ public class Application {
 
         // testAgencyList();
         // testRouteList();
-        testRouteConfig();
+        // testRouteConfig();
+
+        RouteProvider routeProvider = new RouteProvider();
+        Route nJudah = routeProvider.retrieveRoute("N");
+
+        System.out.println(nJudah.getName());
+        System.out.println(nJudah.getOutbound().getStops().get(0).getName());
+        System.out.println(nJudah.getInbound().getStops().get(0).getName());
+
+        for(Stop stop : nJudah.getOutbound().getStops()) {
+            System.out.println(stop.getName());
+        }
+
+        Route fCastro = routeProvider.retrieveRoute("F");
+
+        System.out.println(fCastro.getName());
+        System.out.println(fCastro.getOutbound().getStops().get(0).getName());
+        System.out.println(fCastro.getInbound().getStops().get(0).getName());
 
     }
 
