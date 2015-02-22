@@ -1,4 +1,4 @@
-package org.asanderson.munifetch.model.agencies;
+package org.asanderson.munifetch.xmlobjects.agencies;
 
 import javax.xml.bind.annotation.XmlAnyAttribute;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * Created by aanderson on 2/19/15.
  */
 @XmlRootElement(name="agency")
-public class Agency {
+public class AgencyXML {
 
     @XmlAnyAttribute
     public String shortTitle;

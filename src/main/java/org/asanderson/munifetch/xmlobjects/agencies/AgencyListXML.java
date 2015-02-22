@@ -1,4 +1,4 @@
-package org.asanderson.munifetch.model.agencies;
+package org.asanderson.munifetch.xmlobjects.agencies;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
@@ -10,16 +10,16 @@ import java.util.ArrayList;
  * Created by aanderson on 2/19/15.
  */
 @XmlRootElement(name="body")
-public class AgencyList {
+public class AgencyListXML {
 
     @XmlElementWrapper(name="body")
     @XmlElement(name="agency")
-    public ArrayList<Agency> agency;
+    public ArrayList<AgencyXML> agency;
 
     @XmlAttribute
     public String copyright;
 
-    public ArrayList<Agency> getAgencies() {
+    public ArrayList<AgencyXML> getAgencies() {
         return agency;
     }
 }
