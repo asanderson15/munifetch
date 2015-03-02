@@ -27,23 +27,23 @@ public class Stop {
         this.stopId = stopId;
     }
 
-    public String getName() {
+    public synchronized String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public synchronized void setName(String name) {
         this.name = name;
     }
 
-    public String getTag() {
+    public synchronized String getTag() {
         return tag;
     }
 
-    public void setTag(String tag) {
+    public synchronized void setTag(String tag) {
         this.tag = tag;
     }
 
-    public String getStopId() {
+    public synchronized String getStopId() {
         return stopId;
     }
 
@@ -51,15 +51,15 @@ public class Stop {
         this.stopId = stopId;
     }
 
-    public ArrayList<Prediction> getPredictions() {
+    public synchronized ArrayList<Prediction> getPredictions() {
         return predictions;
     }
 
-    public void setPredictions(ArrayList<Prediction> predictions) {
+    public synchronized void setPredictions(ArrayList<Prediction> predictions) {
         this.predictions = predictions;
     }
 
-    public String getPredictionsString() {
+    public synchronized String getPredictionsString() {
         StringBuilder out = new StringBuilder();
         boolean first = true;
         for(Prediction pred : predictions) {

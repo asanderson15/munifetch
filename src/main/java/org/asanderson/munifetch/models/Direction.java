@@ -37,47 +37,47 @@ public class Direction {
         this.predictionsUpdated = new DateTime(2014,12,31,0,1); // Way longer than 30-60 seconds
     }
 
-    public String getName() {
+    public synchronized String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public synchronized void setName(String name) {
         this.name = name;
     }
 
-    public String getTag() {
+    public synchronized String getTag() {
         return tag;
     }
 
-    public void setTag(String tag) {
+    public synchronized void setTag(String tag) {
         this.tag = tag;
     }
 
-    public String getDirection() {
+    public synchronized String getDirection() {
         return direction;
     }
 
-    public void setDirection(String direction) {
+    public synchronized void setDirection(String direction) {
         this.direction = direction;
     }
 
-    public ArrayList<Stop> getStops() {
+    public synchronized ArrayList<Stop> getStops() {
         return stops;
     }
 
-    public void setStops(ArrayList<Stop> stops) {
+    public synchronized void setStops(ArrayList<Stop> stops) {
         this.stops = stops;
     }
 
-    public void addStop(Stop stop) {
+    public synchronized void addStop(Stop stop) {
         this.stops.add(stop);
     }
 
-    public void setPredictionsUpdated() {
+    public synchronized void setPredictionsUpdated() {
         this.predictionsUpdated = DateTime.now();
     }
 
-    public Long getTimeSinceLastUpdate() {
+    public synchronized Long getTimeSinceLastUpdate() {
         return new Duration(this.predictionsUpdated, DateTime.now()).getStandardSeconds();
     }
 

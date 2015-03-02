@@ -28,7 +28,7 @@ public class Application {
         // testRouteConfig();
         // testPredictions();
 
-        RouteProvider routeProvider = new RouteProvider();
+        RouteProvider routeProvider = RouteProvider.getInstance();
         Route nJudah = routeProvider.retrieveRoute("N");
         routeProvider.retrievePredictions(nJudah.getOutbound());
 

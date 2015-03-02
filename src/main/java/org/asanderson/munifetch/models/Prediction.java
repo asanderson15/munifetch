@@ -19,22 +19,22 @@ public class Prediction {
         this.trainHasLeft = trainHasLeft;
     }
 
-    public String getMinutes() {
+    public synchronized String getMinutes() {
         if(this.minutes.equals("0")) {
             return "Arriving";
         }
         return minutes;
     }
 
-    public void setMinutes(String minutes) {
+    public synchronized void setMinutes(String minutes) {
         this.minutes = minutes;
     }
 
-    public String getTrainHasLeft() {
+    public synchronized String getTrainHasLeft() {
         return trainHasLeft;
     }
 
-    public void setTrainHasLeft(String trainHasLeft) {
+    public synchronized void setTrainHasLeft(String trainHasLeft) {
         this.trainHasLeft = trainHasLeft;
     }
 }

@@ -32,9 +32,15 @@ public class RouteProvider {
 
     private HashMap<String,Route> loadedRoutes;
 
-    public RouteProvider() {
+    static final private RouteProvider INSTANCE = new RouteProvider();
+
+    private RouteProvider() {
         routeIds = new ArrayList<String>();
         loadedRoutes = new HashMap<String, Route>();
+    }
+
+    static public RouteProvider getInstance() {
+        return INSTANCE;
     }
 
     /***************************************

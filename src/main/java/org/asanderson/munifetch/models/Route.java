@@ -33,39 +33,39 @@ public class Route {
         this.directions = new ArrayList<Direction>();
     }
 
-    public String getName() {
+    public synchronized String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public synchronized void setName(String name) {
         this.name = name;
     }
 
-    public String getTag() {
+    public synchronized String getTag() {
         return tag;
     }
 
-    public void setTag(String tag) {
+    public synchronized void setTag(String tag) {
         this.tag = tag;
     }
 
-    public String getColor() {
+    public synchronized String getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public synchronized void setColor(String color) {
         this.color = color;
     }
 
-    public String getOppositeColor() {
+    public synchronized String getOppositeColor() {
         return oppositeColor;
     }
 
-    public void setOppositeColor(String oppositeColor) {
+    public synchronized void setOppositeColor(String oppositeColor) {
         this.oppositeColor = oppositeColor;
     }
 
-    public ArrayList<Direction> getDirections() {
+    public synchronized ArrayList<Direction> getDirections() {
         return directions;
     }
 
@@ -73,11 +73,11 @@ public class Route {
         this.directions = directions;
     }
 
-    public void addDirection(Direction direction) {
+    public synchronized void addDirection(Direction direction) {
         this.directions.add(direction);
     }
 
-    public Direction getOutbound() {
+    public synchronized Direction getOutbound() {
         for(Direction dir : this.directions) {
             if(dir.getDirection().equals("Outbound")) {
                 return dir;
@@ -86,7 +86,7 @@ public class Route {
         return this.directions.get(0);
     }
 
-    public Direction getInbound() {
+    public synchronized Direction getInbound() {
         for(Direction dir : this.directions) {
             if(dir.getDirection().equals("Inbound")) {
                 return dir;
