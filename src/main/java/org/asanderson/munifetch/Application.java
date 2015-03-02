@@ -8,6 +8,7 @@ import org.asanderson.munifetch.models.Route;
 import org.asanderson.munifetch.models.RouteProvider;
 import org.asanderson.munifetch.models.Stop;
 import org.asanderson.munifetch.xmlobjects.agencies.AgencyListXML;
+import org.asanderson.munifetch.xmlobjects.predictions.MultiPredictionXML;
 import org.asanderson.munifetch.xmlobjects.routeconfigs.RouteConfigXML;
 import org.asanderson.munifetch.xmlobjects.routes.RouteListXML;
 import org.glassfish.jersey.client.ClientConfig;
@@ -27,9 +28,11 @@ public class Application {
         // testRouteConfig();
 
         RouteProvider routeProvider = new RouteProvider();
-        Route nJudah = routeProvider.retrieveRoute("N");
+        Route nJudah = routeProvider.retrieveRoute("43");
 
         System.out.println(nJudah.getName());
+        System.out.println(nJudah.getColor());
+        System.out.println(nJudah.getOppositeColor());
         System.out.println(nJudah.getOutbound().getStops().get(0).getName());
         System.out.println(nJudah.getInbound().getStops().get(0).getName());
 
@@ -42,6 +45,8 @@ public class Application {
         System.out.println(fCastro.getName());
         System.out.println(fCastro.getOutbound().getStops().get(0).getName());
         System.out.println(fCastro.getInbound().getStops().get(0).getName());
+
+        testPredictions();
 
     }
 
@@ -112,5 +117,28 @@ public class Application {
 
         RouteConfigXML routes = mapper.readValue(responseText, RouteConfigXML.class);
         System.out.println(routes.route.stop.get(0).title);
+    }
+
+    public static void testPredictions() throws Exception {
+        ClientConfig config = new ClientConfig();
+        Client client = ClientBuilder.newClient(config);
+
+        WebTarget webTarget = client.target("http://webservices.nextbus.com/service/publicXMLFeed?command=predictionsForMultiStops&a=sf-muni&stops=N%7C6997&stops=N%7C3909");
+
+        Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_XML);
+
+        Response response = invocationBuilder.get();
+
+        System.out.println(response.getStatus());
+        String responseText = response.readEntity(String.class);
+        System.out.println(responseText);
+
+        // Set up Jackson XML
+        JacksonXmlModule module = new JacksonXmlModule();
+        module.setDefaultUseWrapper(false);
+        ObjectMapper mapper = new XmlMapper(module);
+
+        MultiPredictionXML predictions = mapper.readValue(responseText, MultiPredictionXML.class);
+        System.out.println(predictions.predictions.get(0).direction.get(0).prediction.get(0).minutes);
     }
 }
