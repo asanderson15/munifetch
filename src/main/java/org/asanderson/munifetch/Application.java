@@ -26,9 +26,11 @@ public class Application {
         // testAgencyList();
         // testRouteList();
         // testRouteConfig();
+        // testPredictions();
 
         RouteProvider routeProvider = new RouteProvider();
-        Route nJudah = routeProvider.retrieveRoute("43");
+        Route nJudah = routeProvider.retrieveRoute("N");
+        routeProvider.retrievePredictions(nJudah.getOutbound());
 
         System.out.println(nJudah.getName());
         System.out.println(nJudah.getColor());
@@ -37,16 +39,9 @@ public class Application {
         System.out.println(nJudah.getInbound().getStops().get(0).getName());
 
         for(Stop stop : nJudah.getOutbound().getStops()) {
-            System.out.println(stop.getName());
+            System.out.println(stop.getName() + " - " + stop.getPredictionsString());
         }
 
-        Route fCastro = routeProvider.retrieveRoute("F");
-
-        System.out.println(fCastro.getName());
-        System.out.println(fCastro.getOutbound().getStops().get(0).getName());
-        System.out.println(fCastro.getInbound().getStops().get(0).getName());
-
-        testPredictions();
 
     }
 
