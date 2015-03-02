@@ -1,5 +1,9 @@
 package org.asanderson.munifetch.models;
 
+import org.joda.time.DateTime;
+import org.joda.time.Duration;
+import org.joda.time.Interval;
+
 import java.util.ArrayList;
 
 /**
@@ -15,11 +19,14 @@ public class Direction {
 
     private ArrayList<Stop> stops;
 
+    private DateTime predictionsUpdated;
+
     public Direction() {
         this.name = "";
         this.tag = "";
         this.direction = "";
         this.stops = new ArrayList<Stop>();
+        this.predictionsUpdated = new DateTime(2014,12,31,0,1); // Way longer than 30-60 seconds
     }
 
     public Direction(String name, String tag, String direction) {
@@ -27,6 +34,7 @@ public class Direction {
         this.tag = tag;
         this.direction = direction;
         this.stops = new ArrayList<Stop>();
+        this.predictionsUpdated = new DateTime(2014,12,31,0,1); // Way longer than 30-60 seconds
     }
 
     public String getName() {
@@ -63,6 +71,14 @@ public class Direction {
 
     public void addStop(Stop stop) {
         this.stops.add(stop);
+    }
+
+    public void setPredictionsUpdated() {
+        this.predictionsUpdated = DateTime.now();
+    }
+
+    public Long getTimeSinceLastUpdate() {
+        return new Duration(this.predictionsUpdated, DateTime.now()).getStandardSeconds();
     }
 
 }
