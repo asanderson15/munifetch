@@ -1,5 +1,7 @@
 package org.asanderson.munifetch.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 
 /**
@@ -15,6 +17,7 @@ public class Route {
 
     private String oppositeColor;
 
+    @JsonIgnore
     private ArrayList<Direction> directions;
 
     public Route() {

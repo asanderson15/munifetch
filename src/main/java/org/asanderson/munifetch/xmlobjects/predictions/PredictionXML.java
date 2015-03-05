@@ -39,4 +39,10 @@ public class PredictionXML {
 
     @XmlAttribute
     public String affectedByLayover;
+
+    @XmlAttribute
+    public String delayed;
+
+    @XmlAttribute
+    public String slowness;
 }

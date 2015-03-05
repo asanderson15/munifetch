@@ -1,5 +1,6 @@
 package org.asanderson.munifetch.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
 import org.joda.time.Interval;
