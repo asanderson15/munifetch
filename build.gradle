@@ -7,13 +7,38 @@
  * user guide available at http://gradle.org/docs/2.3/userguide/tutorial_java_projects.html
  */
 
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.0'
+    }
+}
 
 // Apply the java plugin to add support for Java
-apply plugin: 'java'
-apply plugin: 'application'
+plugins {
+    id 'java'
+    id 'application'
+    id 'maven'
+    id 'com.github.johnrengelman.shadow' version '1.2.0'
+}
+
+/* Need to set path for Maven repo build in local.gradle
+ *
+ * e.g. of local.gradle file contents:
+ *
+ * ext.localBuildURL = "file:///home/username/<path>/munifetch/build/maven-repo";
+ *
+ */
+apply from: './local.gradle'
 
 applicationName = "muni-fetch"
 mainClassName = "org.asanderson.munifetch.Application"
+
+project.version = "0.0.0"
+project.group = "org.asanderson.munifetch"
+
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -30,10 +55,41 @@ dependencies {
     compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.5.1'
     compile 'joda-time:joda-time:2.7'
 
+
     // Declare the dependency for your favourite test framework you want to use in your tests.
     // TestNG is also supported by the Gradle Test task. Just change the
     // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
     // 'test.useTestNG()' to your build script.
     testCompile "junit:junit:4.11"
+}
+
+shadowJar {
+    mergeServiceFiles()
+    exclude 'META-INF/*.DSA'
+    exclude 'META-INF/*.RSA'
+}
+
+/* Need to set path in local.gradle
+ *
+ * e.g. of local.gradle file contents:
+ *
+ * ext.localBuildURL = "file:///home/username/<path>/munifetch/build/maven-repo";
+ *
+ */
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: localBuildURL)
+        pom.artifactId = "munifetch"
+
+    }
+}
+
+uploadShadow {
+    repositories.mavenDeployer {
+        repository(url: localBuildURL)
+        pom.artifactId = "munifetch"
+
+    }
 }
 
