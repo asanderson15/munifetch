@@ -75,7 +75,17 @@ public class RouteProvider {
         }
     }
 
+    /*************************************************************************
+     Parse through and retrieve details on all routes
+     *************************************************************************/
 
+    public ArrayList<Route> retrieveAllRouteDetails() {
+        ArrayList<Route> detailedList = new ArrayList<Route>();
+        for(String routeId : routeIds) {
+            detailedList.add(this.retrieveRoute(routeId));
+        }
+        return detailedList;
+    }
 
 
 

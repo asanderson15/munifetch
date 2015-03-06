@@ -17,7 +17,6 @@ public class Route {
 
     private String oppositeColor;
 
-    @JsonIgnore
     private ArrayList<Direction> directions;
 
     public Route() {
@@ -68,6 +67,7 @@ public class Route {
         this.oppositeColor = oppositeColor;
     }
 
+    @JsonIgnore
     public synchronized ArrayList<Direction> getDirections() {
         return directions;
     }
@@ -80,6 +80,7 @@ public class Route {
         this.directions.add(direction);
     }
 
+    @JsonIgnore
     public synchronized Direction getOutbound() {
         for(Direction dir : this.directions) {
             if(dir.getDirection().equals("Outbound")) {
@@ -89,6 +90,7 @@ public class Route {
         return this.directions.get(0);
     }
 
+    @JsonIgnore
     public synchronized Direction getInbound() {
         for(Direction dir : this.directions) {
             if(dir.getDirection().equals("Inbound")) {
